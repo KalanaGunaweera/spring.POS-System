@@ -1,6 +1,7 @@
 package spring.POSSystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import spring.POSSystem.dto.CustomerDTO;
 import spring.POSSystem.dto.ItemDTO;
@@ -26,7 +27,14 @@ public class ItemController {
     public List<ItemDTO> allItembyName(@PathVariable("name") String itemName){
         List<ItemDTO> itemDTOList = itemService.getItemByName(itemName);
         return itemDTOList;
-    }
+    }@GetMapping(path = "get-all-items")
+//
+//    public List<ItemDTO> getallItems(){
+//        List<ItemDTO> itemDTOS = itemService.getAllItems();
+//        return itemDTOS;
+//    }
+    @GetMapping(path = "get-all-items")
+    public ResponseEntity
 
 
 

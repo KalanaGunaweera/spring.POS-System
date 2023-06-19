@@ -11,4 +11,6 @@ public interface ItemService {
     String addItem(RequestSaveItemDTO itemDTO);
 
     List<ItemDTO> getItemByName(String itemName);
+
+    List<ItemDTO> getAllItems();
 }

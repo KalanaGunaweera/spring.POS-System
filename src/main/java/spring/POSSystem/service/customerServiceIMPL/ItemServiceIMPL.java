@@ -56,4 +56,11 @@ public class ItemServiceIMPL implements ItemService {
         List<ItemDTO> itemDTOList = itemMapper.entityListToDTOList(items);
         return itemDTOList;
     }
+
+    @Override
+    public List<ItemDTO> getAllItems() {
+        List<Item> items = itemRepository.findAll();
+        List<ItemDTO> itemDTOList = itemMapper.entityListToDTOList(items);
+        return itemDTOList;
+    }
 }
