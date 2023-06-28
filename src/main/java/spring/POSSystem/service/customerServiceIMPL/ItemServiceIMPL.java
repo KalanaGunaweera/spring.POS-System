@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import spring.POSSystem.dto.ItemDTO;
 import spring.POSSystem.dto.request.RequestSaveItemDTO;
 import spring.POSSystem.entity.Item;
+import spring.POSSystem.exception.NotFoundException;
 import spring.POSSystem.repository.ItemRepository;
 import spring.POSSystem.service.ItemService;
 import spring.POSSystem.util.mappers.ItemMapper;
@@ -60,7 +61,11 @@ public class ItemServiceIMPL implements ItemService {
     @Override
     public List<ItemDTO> getAllItems() {
         List<Item> items = itemRepository.findAll();
-        List<ItemDTO> itemDTOList = itemMapper.entityListToDTOList(items);
-        return itemDTOList;
+        if(items.size()>0){
+            List<ItemDTO> itemDTOList = itemMapper.entityListToDTOList(items);
+            return itemDTOList;
+        }
+        throw new NotFoundException("data not found");
+
     }
 }

@@ -35,6 +35,9 @@ public class ItemController {
 //        List<ItemDTO> itemDTOS = itemService.getAllItems();
 //        return itemDTOS;
 //    }
+
+
+    //standard method calling...
     @GetMapping(path = "get-all-items")
     public ResponseEntity<StandardResponse> getAllItems(){
         List<ItemDTO> itemDTOS = itemService.getAllItems();
