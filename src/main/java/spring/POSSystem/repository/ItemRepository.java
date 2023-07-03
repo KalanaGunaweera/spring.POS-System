@@ -15,7 +15,7 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item,Integer> {
     List<Item> findAllByItemNameIs(String itemName);
 
-    Page<Item> findAllByItemActiveStateEquals(boolean activeState, PageRequest of);
+    Page<Item> findAllByItemActiveStateEquals(boolean activeState, Pageable of);
 
     long countAllByItemActiveStateEquals(boolean activeState);
 
