@@ -76,10 +76,11 @@ public class ItemServiceIMPL implements ItemService {
     @Override
     public PaginatedResponseItemDto getAllItemsActive(int page, int size, int activeState) {
         Page<Item> items = itemRepository.findAllByActiveStateEquals(activeState,PageRequest.of(page,size));
-        int count = itemRepository.countAllByActiveStateEquals(activeState);
-        List<ItemDTO> itemDTOS = itemMapper.pageTOList(items);
-        PaginatedResponseItemDto paginatedResponseItemDto = new PaginatedResponseItemDto(itemDTOS,count);
-        return paginatedResponseItemDto;
+//        int count = itemRepository.countAllByActiveStateEquals(activeState);
+//        List<ItemDTO> itemDTOS = itemMapper.pageTOList(items);
+//        PaginatedResponseItemDto paginatedResponseItemDto = new PaginatedResponseItemDto(itemDTOS,count);
+//        return paginatedResponseItemDto;
+        return new PaginatedResponseItemDto(itemMapper.pageTOList(items),itemRepository.countAllByActiveStateEquals(activeState));
 
 
     }
