@@ -2,14 +2,18 @@ package spring.POSSystem.service.customerServiceIMPL;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import spring.POSSystem.dto.ItemDTO;
+import spring.POSSystem.dto.paginated.PaginatedResponseItemDto;
 import spring.POSSystem.dto.request.RequestSaveItemDTO;
 import spring.POSSystem.entity.Item;
 import spring.POSSystem.exception.NotFoundException;
 import spring.POSSystem.repository.ItemRepository;
 import spring.POSSystem.service.ItemService;
 import spring.POSSystem.util.mappers.ItemMapper;
+
 
 import java.util.List;
 
@@ -68,4 +72,26 @@ public class ItemServiceIMPL implements ItemService {
         throw new NotFoundException("data not found");
 
     }
+
+    @Override
+    public PaginatedResponseItemDto getAllItemsActive(int page, int size, int activeState) {
+        Page<Item> items = itemRepository.findAllByActiveStateEquals(activeState,PageRequest.of(page,size));
+        int count = itemRepository.countAllByActiveStateEquals(activeState);
+        List<ItemDTO> itemDTOS = itemMapper.pageTOList(items);
+        PaginatedResponseItemDto paginatedResponseItemDto = new PaginatedResponseItemDto(itemDTOS,count);
+        return paginatedResponseItemDto;
+
+
+    }
+
+//    @Override
+//    public List<ItemDTO> getAllItemsActive() {
+//        List<Item> items = itemRepository.findAll();
+//        if(items.size()>0){
+//            List<ItemDTO> itemDTOList = itemMapper.entityListToDTOList(items);
+//            return itemDTOList;
+//        }
+//        throw new NotFoundException("data not found");
+//
+//    }
 }

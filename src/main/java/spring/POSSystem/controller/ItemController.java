@@ -1,11 +1,13 @@
 package spring.POSSystem.controller;
 
+import jakarta.validation.constraints.Max;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import spring.POSSystem.dto.CustomerDTO;
 import spring.POSSystem.dto.ItemDTO;
+import spring.POSSystem.dto.paginated.PaginatedResponseItemDto;
 import spring.POSSystem.dto.request.RequestSaveItemDTO;
 import spring.POSSystem.service.CustomerService;
 import spring.POSSystem.service.ItemService;
@@ -43,6 +45,25 @@ public class ItemController {
         List<ItemDTO> itemDTOS = itemService.getAllItems();
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200,"Success",itemDTOS),
+                HttpStatus.OK);
+    }
+
+    @GetMapping(
+            path = "get-all-items-active",
+            params = {"page","size","activeState"}
+    )
+    public ResponseEntity<StandardResponse> getAllItemsActive(
+            @RequestParam (value = "page") int page,
+            @RequestParam (value = "size") @Max(50) int size,
+            @RequestParam (value = "activeState") int activeState
+            ){
+//        List<ItemDTO> itemDTOS = itemService.getAllItemsActive();
+//        return new ResponseEntity<StandardResponse>(
+//                new StandardResponse(200,"Success",itemDTOS),
+//                HttpStatus.OK);
+        PaginatedResponseItemDto paginatedResponseItemDto  = itemService.getAllItemsActive(page,size,activeState);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"Success",paginatedResponseItemDto),
                 HttpStatus.OK);
     }
 
