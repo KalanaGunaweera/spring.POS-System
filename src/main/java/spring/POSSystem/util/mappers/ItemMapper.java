@@ -16,7 +16,7 @@ public interface ItemMapper {
     ItemMapper INSTANCE = Mappers.getMapper(ItemMapper.class);
     Item requestDtoToEntity (RequestSaveItemDTO requestSaveItemDTO);
     List<ItemDTO> entityListToDTOList (List<Item> items);
-    //List<ItemDTO> pageTOList(Page<Item> items);
+    List<ItemDTO> pageTOList(Page<Item> items);
 
     ItemDTO map(Item item);
 }
