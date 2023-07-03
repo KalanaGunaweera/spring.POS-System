@@ -15,7 +15,7 @@ public interface ItemService {
 
     List<ItemDTO> getAllItems();
 
-    PaginatedResponseItemDto getAllItemsActive(int page, int size, int activeState);
+   // PaginatedResponseItemDto getAllItemsActive(int page, int size, int activeState);
 
 //    List<ItemDTO> getAllItemsActive();
 }

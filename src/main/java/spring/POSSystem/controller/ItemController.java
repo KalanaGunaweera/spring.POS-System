@@ -48,24 +48,24 @@ public class ItemController {
                 HttpStatus.OK);
     }
 
-    @GetMapping(
-            path = "get-all-items-active",
-            params = {"page","size","activeState"}
-    )
-    public ResponseEntity<StandardResponse> getAllItemsActive(
-            @RequestParam (value = "page") int page,
-            @RequestParam (value = "size") @Max(50) int size,
-            @RequestParam (value = "activeState") int activeState
-            ){
-//        List<ItemDTO> itemDTOS = itemService.getAllItemsActive();
+//    @GetMapping(
+//            path = "get-all-items-active",
+//            params = {"page","size","activeState"}
+//    )
+//    public ResponseEntity<StandardResponse> getAllItemsActive(
+//            @RequestParam (value = "page") int page,
+//            @RequestParam (value = "size") @Max(50) int size,
+//            @RequestParam (value = "activeState") int activeState
+//            ){
+////        List<ItemDTO> itemDTOS = itemService.getAllItemsActive();
+////        return new ResponseEntity<StandardResponse>(
+////                new StandardResponse(200,"Success",itemDTOS),
+////                HttpStatus.OK);
+//        PaginatedResponseItemDto paginatedResponseItemDto  = itemService.getAllItemsActive(page,size,activeState);
 //        return new ResponseEntity<StandardResponse>(
-//                new StandardResponse(200,"Success",itemDTOS),
+//                new StandardResponse(200,"Success",paginatedResponseItemDto),
 //                HttpStatus.OK);
-        PaginatedResponseItemDto paginatedResponseItemDto  = itemService.getAllItemsActive(page,size,activeState);
-        return new ResponseEntity<StandardResponse>(
-                new StandardResponse(200,"Success",paginatedResponseItemDto),
-                HttpStatus.OK);
-    }
+//    }
 
 
 
