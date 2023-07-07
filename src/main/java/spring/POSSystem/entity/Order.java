@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import nonapi.io.github.classgraph.json.Id;
 
 import java.util.Date;
 
@@ -16,14 +15,11 @@ import java.util.Date;
 @Data
 
 
-public class Orders {
-
+public class Order {
     @Id
     @Column(name="order_id",length=45)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderId;
-    @jakarta.persistence.Id
-    private Long id;
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
@@ -31,6 +27,11 @@ public class Orders {
 
     @Column(name = "order_date",columnDefinition = "DATETIME")
     private Date date;
+
+    @Column(name = "total",nullable = false)
+    private Double total;
+
+
 
 
 

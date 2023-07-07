@@ -32,7 +32,7 @@ public class Customer {
     private boolean customerActiveState;
 
     @OneToMany(mappedBy="customers")
-    private Set<Orders> orders;
+    private Set<Order> orders;
 
 
 }
