@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -30,6 +31,9 @@ public class Order {
 
     @Column(name = "total",nullable = false)
     private Double total;
+
+    @OneToMany(mappedBy="orders")
+    private Set<OrderDetails> orderDetails;
 
 
 

@@ -37,6 +37,7 @@ public class Item {
 
     @Column(name = "Item_Status", columnDefinition = "TINYINT default 1")
     private boolean itemActiveState;
+
     @OneToMany(mappedBy="items")
     private Set<OrderDetails> orderDetails;
 

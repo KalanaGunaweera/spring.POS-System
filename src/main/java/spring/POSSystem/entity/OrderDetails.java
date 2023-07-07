@@ -30,4 +30,9 @@ public class OrderDetails {
     @ManyToOne
     @JoinColumn(name="item_id", nullable=false)
     private Item items;
+
+    @ManyToOne
+    @JoinColumn(name="order_id", nullable=false)
+    private Order orders;
+
 }
