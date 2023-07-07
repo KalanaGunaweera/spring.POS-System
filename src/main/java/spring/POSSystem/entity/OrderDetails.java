@@ -26,4 +26,8 @@ public class OrderDetails {
 
     @Column(name = "amount",nullable = false)
     private Double amount;
+
+    @ManyToOne
+    @JoinColumn(name="item_id", nullable=false)
+    private Item items;
 }

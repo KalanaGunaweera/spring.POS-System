@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import spring.POSSystem.entity.enums.MeasuringUnitType;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Item")
 @Data
@@ -35,5 +37,8 @@ public class Item {
 
     @Column(name = "Item_Status", columnDefinition = "TINYINT default 1")
     private boolean itemActiveState;
+    @OneToMany(mappedBy="items")
+    private Set<OrderDetails> orderDetails;
+
 
 }
