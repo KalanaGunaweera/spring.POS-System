@@ -22,5 +22,9 @@ public class Orders {
     @jakarta.persistence.Id
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name="customer_id", nullable=false)
+    private Customer customers;
+
 
 }

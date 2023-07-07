@@ -5,12 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Customer")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
+    public Customer(int customerId, String customerName, String customerAddrress, String customerNIC, double customerSalary, boolean customerActiveState) {
+    }
+
     @Id
     @Column(name = "Customer_Id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,5 +30,9 @@ public class Customer {
     private double customerSalary;
     @Column(name = "Customer_Status", columnDefinition = "TINYINT default 1")
     private boolean customerActiveState;
+
+    @OneToMany(mappedBy="customers")
+    private Set<Orders> orders;
+
 
 }
